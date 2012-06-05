@@ -2,12 +2,13 @@
 #works on linux system
 
 BASEDIR=$(dirname $0)
-
-PID=BASEDIR/.pid
-DeployPID=BASEDIR/deploy/.pid
+PID=$BASEDIR/.pid
+DeployPID=$BASEDIR/deploy/.pid
 
 if [ -f $PID ]
 then
+	cat $PID
+	echo ' killed \n'
     cat $PID | xargs kill -9
     rm  $PID
 else
@@ -16,6 +17,9 @@ fi
 
 if [ -f $DeployPID ]
 then
+	cat $DeployPID
+	echo ' killed \n '
+	
     cat $DeployPID | xargs kill -9
     rm  $DeployPID
 else
