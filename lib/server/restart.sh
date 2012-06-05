@@ -8,7 +8,7 @@ DeployPID=$BASEDIR/deploy/.pid
 if [ -f $PID ]
 then
 	cat $PID
-	echo ' killed \n'
+	echo ' killed'
     cat $PID | xargs kill -9
     rm  $PID
 else
@@ -18,7 +18,7 @@ fi
 if [ -f $DeployPID ]
 then
 	cat $DeployPID
-	echo ' killed \n '
+	echo ' killed'
 	
     cat $DeployPID | xargs kill -9
     rm  $DeployPID
