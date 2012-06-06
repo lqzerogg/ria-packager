@@ -34,10 +34,10 @@ https://github.com/dongyuwei/weibo-packager.git
 ## lib/js/main.js  压缩合并js工程,如home工程
 Usage: 
 ```
-node lib/js/main.js fromDir toDir projectPath [-verbose] [-onlyConf] [-confSpecial][-mangle][-squeeze][-noMD5]
+node lib/js/main.js fromDir toDir [projectPath] [-verbose] [-onlyConf] [-confSpecial][-mangle][-squeeze][-noMD5]
 ```
 
-  * projectPath 参数形如't4/home , t4/webim , t4/apps/data 等'
+  * projectPath 参数形如't4/home , t4/webim , t4/apps/data 等',当有-noMD5时projectPath可省略.
   * 兼容目前的使用方式时应该使用 -onlyConf -confSpecial这两个选项
 如 node js/main.js input/home/ output/home t4 -onlyConf -confSpecial
   * 压缩优化的主要选项是-mangle和-squeeze
@@ -54,10 +54,10 @@ node lib/js/main.js fromDir toDir projectPath [-verbose] [-onlyConf] [-confSpeci
 ## lib/css/main.js 压缩合并css工程,如style工程
 Usage: 
 ```
-node lib/css/main.js fromDir toDir projectPath [-verbose][-noMD5]
+node lib/css/main.js fromDir toDir [projectPath] [-verbose][-noMD5]
 ```
  
-  * projectPath 参数形如't4/style , t4/skin , t4/appstyle/webim 等'
+  * projectPath 参数形如't4/style , t4/skin , t4/appstyle/webim 等',当有-noMD5时projectPath可省略.
   * 参数列表:
 	-verbose or -v 显示详细log日志.为加快速度,默认不输出详细日志,只显示警告和严重错误信息.
 	-noMD5 关闭md5处理. 默认进行css和图片等资源的md5计算及路径替换.
