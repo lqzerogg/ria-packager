@@ -9,7 +9,7 @@ if [ -f $PID ]
 then
 	cat $PID
 	echo ' killed'
-    cat $PID | xargs kill -9
+    cat $PID | xargs kill
     rm  $PID
 else
     pkill -f weibo-ria-server
@@ -20,7 +20,7 @@ then
 	cat $DeployPID
 	echo ' killed'
 	
-    cat $DeployPID | xargs kill -9
+    cat $DeployPID | xargs kill
     rm  $DeployPID
 else
     pkill -f ria-deploy-server
