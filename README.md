@@ -105,6 +105,8 @@ node lib/css/main.js fromDir toDir [projectPath] [-verbose][-noMD5]
  2. 系统内置uglify-js版本已经升级到1.2.6
  3. 由于历史原因(兼容微博目前的前端架构),对js工程下/conf/目录读写需要特殊处理,阅读源码时请注意.
 
+#北京node-party交流会上对weibo-packager的一些简介和nodejs开发tips分享
+https://github.com/downloads/dongyuwei/weibo-packager/nodeparty-dongyuwei-6-11.pdf
 #Legal
 -----
 weibo-packager is licensed under the Apache 2.0 license.
