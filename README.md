@@ -12,12 +12,18 @@ https://github.com/dongyuwei/weibo-packager.git
   1. 遍历所有目录,收集到所有js和非js文件;
   2. 配置输出目录,使其内部保持和输入文件夹内部相同的目录结构;
   3. 批量压缩(格式化)所有js;
-  4. 批量合并所有js(<span style='color:red;'>$import('a.b.c'); or $import('a/b/c.js'); </span>);并且排除重复$import.
+  4. 批量合并所有$import的js,并且排除重复$import.
   5. 合并后的js写入到目标目录下;写的同时计算其md5 hash值,并且生成一个新文件(路径中包含md5值).
   6. 最后copy所有非js文件.copy的同时计算其md5 hash值,并且生成一个新文件(路径中包含md5值).
   7. 中间会通过遍历AST语法树查找require(require.register or rm.register),最终生成的映射文件插入base.js的尾部,异步请求该文件时会动态替换.
   8. md5_mapping.json为所有文件的路径与其md5 hash值的映射;该文件输出到目标根目录下.
-  
+
+```
+//支持下面2种形式的$import来引入依赖js文件,基准目录为xxx_project/js/conf/
+$import('a.b.c'); //import xxx_project/js/a/b/c.js
+$import('a/b/c.js');//import xxx_project/js/a/b/c.js
+```
+
 ##对css工程(如t4/style或者t4/skin等):
   1. 遍历所有目录,收集到所有css和非css文件;
   2. 配置输出目录,使其内部保持和输入文件夹内部相同的目录结构;
