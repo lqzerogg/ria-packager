@@ -1,6 +1,6 @@
 {
-	"name" : "weibo-packager",
-	"description" : "batch compressor for js and css, from sina weibo",
+	"name" : "ria-packager",
+	"description" : "batch compressor for js and css, from sina weibo.",
 	"author" : {
 		"name" : "dongyuwei",
 		"email" : "newdongyuwei@gmail.com",
@@ -12,7 +12,7 @@
 	}],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dongyuwei/weibo-packager.git"
+		"url": "https://github.com/dongyuwei/ria-packager.git"
 	},
 	"version" : "1.0.0",
 	"dependencies" : {
