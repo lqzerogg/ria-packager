@@ -3,7 +3,7 @@
 	"description" : "batch compressor for js and css, from sina weibo",
 	"author" : {
 		"name" : "dongyuwei",
-		"email" : "yuwei@staff.sina.com.cn",
+		"email" : "newdongyuwei@gmail.com",
 		"url" : "http://session.im"
 	},
 	"contributors" : [{
@@ -17,7 +17,8 @@
 	"version" : "1.0.0",
 	"dependencies" : {
 		"uglify-js" : "1.2.6",
-		"arguments" : "1.0.0",
-		"express" : "2.5.8"
+		"argsparser" : "0.0.6",
+		"express" : "2.5.8",
+		"mkdirp"  : "0.3.4"
 	}
 }
