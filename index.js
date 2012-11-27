@@ -8,7 +8,7 @@ var weiboPkgJs = require('./lib/js/PKG/weiboPkgJs');
 var weiboPkgCss = require('./lib/css//PKG/weiboPkgCss');
 
 var cpf = require('./lib/tools/cpFile');
-var writeMappingFile = require('./lib/tools/writeMappingFile');
+var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
 
 console.time('Package-Time');
 
@@ -61,6 +61,7 @@ weiboPkgCss(from,to,cssList);
 //4. 压缩,合并js
 weiboPkgJs(from,to,jsList,conf);
 
+//5 write md5Mapping.json
 writeMappingFile(from,to);
 
 console.log('######## Package SUCCESS! ###########');
