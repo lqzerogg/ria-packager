@@ -12,6 +12,7 @@
  `node index.js -from ~/code/litb-fe-prototype/src/ -to /tmp/dist/ -v `
  
 #辅助开发服务器（用于开发测试，联调）
-1. 启动服务器: `node httpd.js` or `sh restart.sh`
-2. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
-3. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
+1. 修改lib/server/config.js
+2. 启动服务器: `node lib/server/httpd.js` or `sh lib/server/restart.sh`
+3. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
+4. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
