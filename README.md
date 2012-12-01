@@ -15,3 +15,8 @@
 1. 启动服务器: `node httpd.js` or `sh restart.sh`
 2. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
 3. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
+
+
+#note:
+安装express 3.0.3
+`npm install express@3.0.3`
