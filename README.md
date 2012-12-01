@@ -19,4 +19,4 @@
 
 #note:
 安装express 3.0.3
-`npm install express@3.0.3`
+`npm install -g express@3.0.3`
