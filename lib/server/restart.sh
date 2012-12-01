@@ -19,7 +19,7 @@ nohup node ${BASEDIR}/httpd.js  > ${BASEDIR}/.log.txt 2>&1 &
 
 
 echo 'waiting...'
-sleep 5
+sleep 3
 cat ${BASEDIR}/.log.txt 
 
 exit 0
