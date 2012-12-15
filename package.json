@@ -20,6 +20,6 @@
 		"argsparser" : "0.0.6",
 		"express" : "3.0.3",
 		"mkdirp"  : "0.3.4",
-		"mustache" : "0.7.0"
+		"handlebars" : "1.0.7"
 	}
 }
