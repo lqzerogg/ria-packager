@@ -42,8 +42,16 @@ var files = walk(from), jsList = files.js, cssList = files.css, htmlList = files
 
 //1. 先把目标目录建立好
 var target;
-jsList.concat(cssList).concat(otherFiles).forEach(function(uri){
+jsList.concat(cssList).concat(htmlList).concat(otherFiles).forEach(function(uri){
 	target = uri.replace(from,to);
+	if(!fs.existsSync(path.dirname(target))){
+		mkdirp.sync(path.dirname(target),0777);
+	}
+});
+
+//create  mustache html template dir.
+htmlList.forEach(function(uri){
+	target = uri.replace(from, path.join(to,path.sep,'template',path.sep));
 	if(!fs.existsSync(path.dirname(target))){
 		mkdirp.sync(path.dirname(target),0777);
 	}
