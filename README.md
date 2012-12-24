@@ -9,7 +9,7 @@
   `npm install ria-packager` 
 
 #构建静态资源（合并，压缩js，css）:
- `node index.js -from ~/code/litb-fe-prototype/src/ -to /tmp/dist/ -v `
+ `node index.js -from ~/workspace/litb_ria/mobile/trunk/   -to /tmp/mobile/ -v `
  
 #辅助开发服务器（用于开发测试，联调）
 1. 修改lib/server/config.js
