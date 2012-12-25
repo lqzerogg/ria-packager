@@ -4,8 +4,8 @@ var mkdirp = require('mkdirp');
 var log = require('./lib/tools/log');
 var walk = require('./lib/tools/dirWalker');
 
-var weiboPkgJs = require('./lib/js/PKG/weiboPkgJs');
-var weiboPkgCss = require('./lib/css//PKG/weiboPkgCss');
+var pkgJs = require('./lib/js/PKG/pkgJs');
+var pkgCss = require('./lib/css//PKG/pkgCss');
 
 var cpf = require('./lib/tools/cpFile');
 var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
@@ -64,10 +64,10 @@ otherFiles.forEach(function(source){
 });
 
 //3.压缩,合并css
-weiboPkgCss(from,to,cssList);
+pkgCss(from,to,cssList);
 
 //4. 压缩,合并js
-weiboPkgJs(from,to,jsList,conf);
+pkgJs(from,to,jsList,conf);
 
 //5 write md5Mapping.json
 writeMappingFile(from,to);
