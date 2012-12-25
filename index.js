@@ -13,6 +13,7 @@ var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
 var conf = require("argsparser").parse();
 
 function release(conf) {
+    console.log(conf)
     console.time('Package-Time');
 
     function showUsage() {
@@ -90,8 +91,7 @@ function release(conf) {
 }
 
 module.exports = release;
-if(/index\.js$/.test(__filename)){
+if(conf.node === __filename){
 	release(conf);
+    process.exit(0);
 }
-
-process.exit(0);
