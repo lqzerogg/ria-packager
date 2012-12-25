@@ -18,6 +18,9 @@
 2. 启动服务器: `node lib/server/httpd.js` or `sh lib/server/restart.sh`
 3. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
 4. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
+5. 支持按照 https://github.com/taobao/nginx-http-concat 的规范来动态合并静态资源，单个资源可使用独立版本号控制缓存。如：
+  1. `http://127.0.0.1:8888/mobile/??i18n/js/en.js,page/checkout_address_process/checkout_address_process.js`
+  2. `http://127.0.0.1:8888/mobile/??page/checkout_address_process/checkout_address_process.css?v=dbdd7e7721287c19,theme/blue/skin.css?v=99129a3f2430cb5a`
 
 ##模板测试数据及自定义模板容器：##
 1. 渲染widget和pagelet时，会在模板文件父目录下查找_test/_layout.html，如果存在该模板，就使用它作为wiget的父模板。
