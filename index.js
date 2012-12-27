@@ -13,7 +13,6 @@ var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
 var conf = require("argsparser").parse();
 
 function release(conf) {
-    console.log(conf)
     console.time('Package-Time');
 
     function showUsage() {
