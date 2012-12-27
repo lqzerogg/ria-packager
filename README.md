@@ -14,7 +14,9 @@
  2. -to 参数 指明输出目录（可以是任意临时目录）
  
 #辅助开发服务器（用于开发测试，联调）
-1. 修改lib/server/config.js
+1. 修改lib/server/config.js 
+  1. `documentRoot`应该指向工程根目录的父级目录：如开发工程为 `/data/ria/mobile`，则`documentRoot`应该设置为`/data/ria`这级目录。
+  2. windows 系统下使用类似 `D:\\data\\ria`  格式的目录，注意路径分割符`\\`。
 2. 启动服务器: `node lib/server/httpd.js` or `sh lib/server/restart.sh`
 3. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
 4. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
