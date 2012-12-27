@@ -1,6 +1,6 @@
 {
 	"name" : "ria-packager",
-	"description" : "batch compressor for js and css, from sina weibo.",
+	"description" : "batch compressor for js and css. support mustache template.",
 	"author" : {
 		"name" : "dongyuwei",
 		"email" : "newdongyuwei@gmail.com",
