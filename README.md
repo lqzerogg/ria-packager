@@ -12,6 +12,10 @@
  `node index.js -from ~/workspace/litb_ria/mobile/trunk/   -to /tmp/mobile/ -v `
  1. -from 参数 指明要打包的工程根目录
  2. -to 参数 指明输出目录（可以是任意临时目录）
+
+#在线打包部署（方便不习惯命令行的用户，目前只支持linux系统）
+ 1. 访问 `工程名称/deploy` 路径，如`mobile/deploy` 可在线打包mobile工程为`mobile.zip`可供下载
+
  
 #辅助开发服务器（用于开发测试，联调）
 1. 修改lib/server/config.js 
