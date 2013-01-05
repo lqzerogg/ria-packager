@@ -25,7 +25,8 @@
  6. 开发环境及打包系统会自动替换 {{{main_css}}}和{{{main_js}}}为模板对应的主css和js。
 
 #前端资源独立发布上线(url根目录不变)#
- 1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js?v=ae5612f5c574a8ca,page/a/b.js?v=635116ee02ab32fd`，其中resource是固定工程目录，如 ** /ria/mobile**   
+ 1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js?v=ae5612f5c574a8ca,page/a/b.js?v=635116ee02ab32fd`，
+ 其中resource是固定工程目录，如 **/ria/mobile**   
  2. 注意： **CDNs use pull-based caching, not push-based replication**
 
 
