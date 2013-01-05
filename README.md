@@ -18,10 +18,13 @@
  
 #前端资源独立发布上线#
  1. 使用 **resource_xyz** 形式发布，如 **mobile** 工程打包会会变成 **mobile_90278** ,其中90278是mobile工程svn主干最新版本号。
- 2. page页面使用`<link href="{{{cdn}}}/{{{resource}}}/??page/a/b.css,{{{skin}}},{{{i18n_css}}}"/>`引用css。
- 3. page页面使用`<script type="text/javascript" src="{{{cdn}}}/{{{resource}}}/??{{{i18n_css}}},page/a/b.js"></script>`引用js。
- 4. cdn由模板数据决定，resource在开发期会被替换成当前工程名称，如mobile。
- 5. 发布上线时，打包系统会自根据最新svn版本号，来替换{{{resource}}}为对应的 **resource_xyz** ，如 **mobile_90278** 。
+ 2. page页面使用`<link href="{{{cdn}}}/{{{resource}}}/??{{{main_css}}},{{{skin_css}}},{{{i18n_css}}}"/>`引用css。
+ 3. page页面使用`<script type="text/javascript" src="{{{cdn}}}/{{{resource}}}/??{{{i18n_js}}},{{{main_js}}}"></script>`引用js。
+ 4. {{{cdn}}},{{{skin_css}}},{{{i18n_css}}},{{{i18n_js}}}由模板数据决定.
+ 5. {{{resource}}}在开发期会被替换成当前工程名称，如mobile。发布时，打包系统会自根据最新svn版本号，来替换{{{resource}}}为对应的 **resource_xyz** ，如 **mobile_90278** 。
+ 6. 开发环境及打包系统会自动替换 {{{main_css}}}和{{{main_js}}}为模板对应的主css和js。
+ 7. 如果未来cdn可以支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，
+ 如`/??i18n/js/en.js?v=ae5612f5c574a8ca,page/a/b.js?v=635116ee02ab32fd`
 
  
 #辅助开发服务器（用于开发测试，联调）
