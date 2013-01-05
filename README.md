@@ -21,7 +21,7 @@
  2. page页面使用`<link href="{{{cdn}}}/{{{resource}}}/??page/a/b.css,{{{skin}}},{{{i18n_css}}}"/>`引用css。
  3. page页面使用`<script type="text/javascript" src="{{{cdn}}}/{{{resource}}}/??{{{i18n_css}}},page/a/b.js"></script>`引用js。
  4. cdn由模板数据决定，resource在开发期会被替换成当前工程名称，如mobile。
- 5. 发布上线时，打包系统会自根据最新svn版本号，来替换{{{resource}}}为对应的**resource_xyz** ，如 **mobile_90278** 。
+ 5. 发布上线时，打包系统会自根据最新svn版本号，来替换{{{resource}}}为对应的 **resource_xyz** ，如 **mobile_90278** 。
 
  
 #辅助开发服务器（用于开发测试，联调）
