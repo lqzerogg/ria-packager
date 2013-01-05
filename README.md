@@ -25,12 +25,13 @@
  6. 开发环境及打包系统会自动替换 {{{main_css}}}和{{{main_js}}}为模板对应的主css和js。
 
 #前端资源独立发布上线(url根目录不变)#
- 1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js?v=ae5612f5c574a8ca,page/a/b.js?v=635116ee02ab32fd`，
+ 1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，
+ 如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js,page/a/b.js?v=635116ee02ab32fd`，
  其中resource是固定工程目录，如 **/ria/mobile**   
- 2. 使用静态文件的内容md5 hash作为控制缓存的版本号。
- 3. 注意： **CDNs use pull-based caching, not push-based replication**
-
-
+ 2. 使用 **合并后的整体静态文件** 的内容md5 hash作为控制缓存的版本号。
+ 3. 单个资源可使用自身md5 hash做版本号。
+ 4. 注意： [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 中 If a third ? is present it's treated as version string. 
+ 5. 注意： **CDNs use pull-based caching, not push-based replication**
 
  
 #辅助开发服务器（用于开发测试，联调）
@@ -40,9 +41,9 @@
 2. 启动服务器: `node lib/server/httpd.js` or `sh lib/server/restart.sh`
 3. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
 4. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
-5. 支持按照 https://github.com/taobao/nginx-http-concat 的规范来动态合并静态资源，单个资源可使用独立版本号控制缓存。如：
+5. 支持按照 [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 的规范来动态合并静态资源，合并后的资源可使用独立版本号控制缓存。如：
   1. `http://127.0.0.1:8888/mobile/??i18n/js/en.js,page/checkout_address_process/checkout_address_process.js`
-  2. `http://127.0.0.1:8888/mobile/??page/checkout_address_process/checkout_address_process.css?v=dbdd7e7721287c19,theme/blue/skin.css?v=99129a3f2430cb5a`
+  2. `http://127.0.0.1:8888/mobile/??page/checkout_address_process/checkout_address_process.css,theme/blue/skin.css?v=99129a3f2430cb5a`
 
 ##模板测试数据及自定义模板容器：##
 1. 渲染widget和pagelet时，会在模板文件父目录下查找_test/_layout.html，如果存在该模板，就使用它作为wiget的父模板。
