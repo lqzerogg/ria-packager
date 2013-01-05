@@ -27,11 +27,11 @@
 #前端资源独立发布上线(url根目录不变)#
  1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，
  如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js,page/a/b.js?v=635116ee02ab32fd`，
- 其中resource是固定工程目录，如 **/ria/mobile**   
- 2. 使用 **合并后的整体静态文件** 的内容md5 hash作为控制缓存的版本号。
- 3. 单个资源可使用自身md5 hash做版本号。
- 4. 注意： [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 中 If a third ? is present it's treated as version string. 
- 5. 注意： **CDNs use pull-based caching, not push-based replication**
+ 其中resource是固定工程目录，如 **/ria/mobile** 
+ 2. 注意： [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 中 If a third ? is present it's treated as version string. 
+ 3. 注意： **CDNs use pull-based caching, not push-based replication**
+ 4. 使用 **合并后的整体静态文件** 的内容md5 hash作为控制缓存的版本号。
+ 5. 如果合并路径中仅有单个文件，则可使用该文件自身md5 hash做版本号。
 
  
 #辅助开发服务器（用于开发测试，联调）
