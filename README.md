@@ -6,7 +6,8 @@
     2. 生成js，css 文件内容md5映射(`md5_mapping.json`)，可用于更新或者回滚版本号。
 
 #通过npm安装:
-  `npm install ria-packager` 
+ 1.  安装老的稳定版，用于支持mobile等老模块化工程:  `npm install ria-packager@1.5.0` 
+ 2.  安装最新版，支持less集成及新工程目录结构: `npm install ria-packager` 
 
 #构建静态资源（合并，压缩js，css）:
  `node index.js -from ~/workspace/litb_ria/mobile/trunk/   -to /tmp/mobile/ -v `
