@@ -8,6 +8,10 @@
 #通过npm安装:
  1.  安装老的稳定版，用于支持mobile等老模块化工程:  `npm install ria-packager@1.5.0` 
  2.  安装最新版，支持less集成及新工程目录结构: `npm install ria-packager` 
+ 3.  如果是安装到 **全局**，即使用`-g`选项： `npm install -g ria-packager`，则可以使用 **ria-packager** 这个系统命令：
+   1.  **package project** : `ria-packager -from fromDir -to toDir [-verbose or -v]`
+   2.  **start    server** : `ria-packager -start`
+   3.  **stop     server** : `ria-packager -stop`
 
 #构建静态资源（合并，压缩js，css）:
  `node index.js -from ~/workspace/litb_ria/mobile/trunk/   -to /tmp/mobile/ -v `
