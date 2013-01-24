@@ -1,7 +1,7 @@
 {
 	"name" : "ria-packager",
 	"main" : "./index.js",
-	"bin"  : { "ria-packager": "./index.js" },
+	"bin"  : { "ria-packager": "./bin/ria-packager" },
 	"description" : "batch compressor for js and css. support mustache template.",
 	"author" : {
 		"name" : "dongyuwei",
@@ -16,7 +16,7 @@
 		"type": "git",
 		"url": "https://github.com/dongyuwei/ria-packager.git"
 	},
-	"version" : "1.5.7",
+	"version" : "1.5.8",
 	"dependencies" : {
 		"uglify-js" : "1.3.4",
 		"argsparser" : "0.0.6",

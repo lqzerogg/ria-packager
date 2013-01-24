@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+var path = require('path');
+var fs = require('fs');
+var release = require('../index.js');
+var conf = require("argsparser").parse();
+
+var spawn = require('child_process').spawn;
+
+if(process.argv.length === 2){
+    console.error('#package project#: ria-packager -from fromDir -to toDir [-verbose or -v]');
+    console.error('#start    server#: ria-packager -start');
+    console.error('#stop     server#: ria-packager -stop');
+    process.exit(1);
+}
+
+var pid  = path.resolve(__dirname,'..','lib','server','.pid');
+
+if(conf['-start']){
+    kill();
+
+    var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js')]);
+    
+    ps.stdout.on('data', function (data) {
+      console.log(data.toString('utf-8'));
+    });
+
+    ps.stderr.on('data', function (data) {
+      console.log(data.toString('utf-8'));
+    });
+
+    return;
+}
+if(conf['-stop']){
+    kill();
+    process.exit(0);
+}
+
+function kill(){
+    if(fs.existsSync(pid)){
+        try{
+            process.kill(fs.readFileSync(pid,'utf-8'));
+
+        }catch(e){
+
+        }
+        fs.unlinkSync(pid);
+    }
+}
+release(conf);
