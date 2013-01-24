@@ -16,7 +16,7 @@ function release(conf) {
     console.time('Package-Time');
 
     function showUsage() {
-        console.error('Usage: node js/main.js -from fromDir -to toDir [-root srcRoot] [-verbose or -v]');
+        console.error('Usage: node index.js -from fromDir -to toDir [-root srcRoot] [-verbose or -v]');
         process.exit(1);
     }
 
