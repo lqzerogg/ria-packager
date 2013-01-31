@@ -15,7 +15,7 @@ if(process.argv.length === 2){
 
 var pid  = path.resolve(__dirname,'..','lib','server','.pid');
 
-if(conf['-start']){
+if(conf['-start'] || conf['-restart']){
     kill();
 
     var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js')]);
