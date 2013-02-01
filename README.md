@@ -42,7 +42,7 @@
  
 #辅助开发服务器（用于开发测试，联调）
 1. cd 目标目录, 如`cd /data/ria/` 该目标目录`/data/ria/`即设置服务器为 **documentRoot** . 默认端口为 **8888**.
-2. 启动服务器: `node lib/server/httpd.js` or `sh lib/server/restart.sh`
+2. 启动服务器: `ria-packager -start` or `node lib/server/httpd.js`
 3. 浏览器访问 /admin/debug 即可设置服务器环境为开发模式，此时按需动态合并js，css，但不压缩不混淆代码。
 4. 浏览器访问 /admin/release 即可设置服务器环境为生产发布模式，此时按需动态合并，压缩（混淆）js，css。
 5. 支持按照 [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 的规范来动态合并静态资源，合并后的资源可使用独立版本号控制缓存。如：

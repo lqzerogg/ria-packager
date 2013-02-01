@@ -13,7 +13,7 @@ if(process.argv.length === 2){
     process.exit(1);
 }
 
-var pid  = path.resolve(__dirname,'..','lib','server','.pid');
+var pid = path.join(os.tmpDir(), '.node_pid');
 
 if(conf['-start'] || conf['-restart']){
     kill();
