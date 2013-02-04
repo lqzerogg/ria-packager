@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var path = require('path');
 var fs = require('fs');
+var os = require('os');
 var release = require('../index.js');
 var conf = require("argsparser").parse();
 
