@@ -70,7 +70,6 @@ function release(conf) {
     });
 
     //2. 复制非js,css,less文件(swf,图片等静态资源,同时计算其md5)
-    console.log('Copy files. Please wait...\n');
     otherFiles.forEach(function(source) {
         cpf(source, source.replace(from, to), to);
     });
