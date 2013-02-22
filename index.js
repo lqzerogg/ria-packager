@@ -8,6 +8,7 @@ var walk = require('./lib/tools/dirWalker');
 
 var pkgJs = require('./lib/js/PKG/pkgJs');
 var pkgCss = require('./lib/css/PKG/pkgCss');
+var pkgLess = require('./lib/less/combineAll');
 
 var cpf = require('./lib/tools/cpFile');
 var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
@@ -47,12 +48,13 @@ function release(conf) {
     var files = walk(from),
         jsList = files.js,
         cssList = files.css,
+        lessList = files.less,
         htmlList = files.html,
         otherFiles = files.other;
 
     //1. 先把目标目录建立好
     var target;
-    jsList.concat(cssList).concat(htmlList).concat(otherFiles).forEach(function(uri) {
+    jsList.concat(cssList).concat(lessList).concat(htmlList).concat(otherFiles).forEach(function(uri) {
         target = uri.replace(from, to);
         if (!fs.existsSync(path.dirname(target))) {
             mkdirp.sync(path.dirname(target), 0777);
@@ -67,7 +69,7 @@ function release(conf) {
         }
     });
 
-    //2. 复制非js,css文件(swf,图片等静态资源,同时计算其md5)
+    //2. 复制非js,css,less文件(swf,图片等静态资源,同时计算其md5)
     console.log('Copy files. Please wait...\n');
     otherFiles.forEach(function(source) {
         cpf(source, source.replace(from, to), to);
@@ -79,10 +81,13 @@ function release(conf) {
     //4. 压缩,合并js
     pkgJs(from, to, jsList, conf);
 
-    //5 write md5Mapping.json
+    //5. parse,combine .less
+    pkgLess(from, to, lessList, conf);
+
+    //6 write md5Mapping.json
     writeMappingFile(from, to);
 
-    //6 copy .html file,and replace the md5 version num.
+    //7 copy .html file,and replace the md5 version num.
     htmlList.forEach(function(source) {
         cpf(source, source.replace(from, to), to);
     });
