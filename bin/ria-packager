@@ -19,7 +19,9 @@ var pid = path.join(os.tmpDir(), '.node_pid');
 if(conf['-start'] || conf['-restart']){
     kill();
 
-    var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js')]);
+    var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js'),
+                   '-port',conf['-port'],
+                   '-root',conf['-root']]);
     
     ps.stdout.on('data', function (data) {
       console.log(data.toString('utf-8'));
