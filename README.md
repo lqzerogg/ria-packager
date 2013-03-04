@@ -10,7 +10,9 @@
  2.  安装最新版，支持less集成及新工程目录结构: `npm install ria-packager` 
  3.  如果是安装到 **全局**，即使用`-g`选项： `sudo npm install -g ria-packager`，则可以使用 **ria-packager** 这个系统命令：
    1.  **package project** : `ria-packager -from fromDir -to toDir [-verbose or -v]`
-   2.  **start    server** : `ria-packager -start`
+   2.  **start    server** : `ria-packager -start [ -root /tmp ] [ -port 80 ]`
+      1. -root为可选参数，默认documentRoot为启动该程序的当前目录。
+      2. 和-port为可选参数，默认监听8888端口。
    3.  **stop     server** : `ria-packager -stop`
 
 #构建静态资源（合并，压缩js，css）:
