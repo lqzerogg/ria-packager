@@ -32,19 +32,13 @@
                 val.value = rootpath + val.value;
             }
             
-            var config = this.env.files._config_;
-            if(config.debug){//dev debug mode
-                var host = 'http://' + config.req.headers.host;
-                val.value = host + absolute(this.env.filename, val.value)
+            var config = this.env.files._config_, host;
+            host = config.debug ? 'http://' + config.req.headers.host : 
+                (typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost);
+
+            val.value = host + absolute(this.env.filename, val.value)
                     .replace(config.documentRoot,'')
                     .replace(/\\/g,'/');
-                
-            }else{//release mod
-                var host = typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost;
-                val.value = host + absolute(this.env.filename, val.value)
-                    .replace(config.documentRoot,'')
-                    .replace(/\\/g,'/');
-            }
 
             // console.log(val, this.env.filename,this.env.files._config_)
             return new(tree.URL)(val, this.rootpath);
