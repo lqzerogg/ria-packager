@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var readline = require('readline');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
@@ -15,16 +16,14 @@ var writeMappingFile = require('./lib/tools/md5').writeMappingFile;
 
 var conf = require("argsparser").parse();
 
-function release(conf) {
-    console.time('Package-Time');
-
+function release(conf){
     function showUsage() {
         console.error('Usage: node index.js -from fromDir -to toDir [-root srcRoot] [-verbose or -v]');
         process.exit(1);
     }
 
     var from = conf['-from'];
-	var to = conf['-to'];
+    var to = conf['-to'];
 
     if (!from || !fs.existsSync(from)) {
         console.log('need fromDir');
@@ -41,6 +40,37 @@ function release(conf) {
         showUsage();
     }
     to = path.join(path.resolve(to), path.sep);
+
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    rl.question("please input the CDN host:\n \
+        1 http://testrelease.lightinthbox.com\n \
+        2 https://lightinthbox.com\n \
+        3 http://(cloud~cloud8).lbox.me\n \
+        or input custom CDN host:...\n\n", function(answer) {
+        switch(answer.trim()) {
+            case '1':
+                conf.cdnHost = 'http://testrelease.lightinthbox.com';
+                break;
+            case '2':
+                conf.cdnHost = 'https://lightinthbox.com';
+                break;
+            case '3':
+                break;
+            default:
+                conf.cdnHost = answer.trim();
+                break;
+        }
+        
+        publish(conf,from,to);
+
+        rl.close();
+    });
+}
+function publish(conf,from,to) {
+    console.time('Package-Time');
 
     //获得打包路径的列表
     console.log('Please wait...\n');
@@ -98,5 +128,5 @@ function release(conf) {
 module.exports = release;
 if(conf.node === __filename){
 	release(conf);
-    process.exit(0);
+    // process.exit(0);
 }

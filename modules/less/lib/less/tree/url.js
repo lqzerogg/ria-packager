@@ -37,10 +37,9 @@
                 (typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost);
 
             val.value = host + absolute(this.env.filename, val.value)
-                    .replace(config.documentRoot,'')
+                    .replace(config.documentRoot, '')
                     .replace(/\\/g,'/');
 
-            // console.log(val, this.env.filename,this.env.files._config_)
             return new(tree.URL)(val, this.rootpath);
         }
     };
