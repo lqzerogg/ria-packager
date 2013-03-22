@@ -1,3 +1,8 @@
+v1.9.5
+==================
+1. can use relative background-img
+
+
 v1.9.4
 ==================
 1. add readline for cli

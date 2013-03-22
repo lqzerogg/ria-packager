@@ -41,33 +41,40 @@ function release(conf){
     }
     to = path.join(path.resolve(to), path.sep);
 
-    var rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    rl.question("please input the CDN host:\n \
-        1 http://testrelease.lightinthbox.com\n \
-        2 https://lightinthbox.com\n \
-        3 http://(cloud~cloud8).lbox.me\n \
-        or input custom CDN host:...\n\n", function(answer) {
-        switch(answer.trim()) {
-            case '1':
-                conf.cdnHost = 'http://testrelease.lightinthbox.com';
-                break;
-            case '2':
-                conf.cdnHost = 'https://lightinthbox.com';
-                break;
-            case '3':
-                break;
-            default:
-                conf.cdnHost = answer.trim();
-                break;
-        }
-        
+    if(conf['-noReadline']){
         publish(conf,from,to);
+    }else{
+        var rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        rl.question("please input the CDN host:\n \
+            1 http://testrelease.lightinthbox.com\n \
+            2 https://lightinthbox.com\n \
+            3 http://(cloud~cloud8).lbox.me\n \
+            or input custom CDN host:...\n\n", function(answer) {
+            switch(answer.trim()) {
+                case '1':
+                    conf.cdnHost = 'http://testrelease.lightinthbox.com';
+                    break;
+                case '2':
+                    conf.cdnHost = 'https://lightinthbox.com';
+                    break;
+                case '3':
+                    break;
+                default:
+                    conf.cdnHost = answer.trim();
+                    if(!conf.cdnHost){
+                        conf.cdnHost = 'RELATIVE';//relative background-img
+                    }
+                    break;
+            }
+            
+            publish(conf,from,to);
 
-        rl.close();
-    });
+            rl.close();
+        });
+    }
 }
 function publish(conf,from,to) {
     console.time('Package-Time');
