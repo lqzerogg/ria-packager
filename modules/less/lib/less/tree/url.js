@@ -2,14 +2,12 @@
     var path = require('path');
 
     /**
-     * 计算图片在合并后的文件中相对路径: 先根据图片和父级css的相对路径计算出图片路径,然后计算该路径与顶级css路径的相对路径.
-     * @param{String}rootPath: 顶级css路径(rootNode of .less @import Tree )
+     * 计算图片绝对路径
      * @param{String}imported: @import引用的css路径
      * @param{String}imgPath: @import引用的css文件中原始图片路径
      * */
-    function relative(rootPath,imported,imgPath){
-        //解决windows平台下path.relative带来的bug(先替换全部'\'为'/', 再去掉一个 '../' )
-        return path.relative(rootPath,path.resolve(imported,'..',imgPath)).replace(/\\/g,'/').replace('../','');
+    function absolute(imported,imgPath){
+        return path.resolve(path.dirname(imported),imgPath);
     }
 
     tree.URL = function (val, rootpath, env) {
@@ -33,9 +31,22 @@
                 }
                 val.value = rootpath + val.value;
             }
-            val.value = relative(this.env.files._root_less_, this.env.filename, val.value);
+            
+            var config = this.env.files._config_;
+            if(config.debug){//dev debug mode
+                var host = 'http://' + config.req.headers.host;
+                val.value = host + absolute(this.env.filename, val.value)
+                    .replace(config.documentRoot,'')
+                    .replace(/\\/g,'/');
+                
+            }else{//release mod
+                var host = typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost;
+                val.value = host + absolute(this.env.filename, val.value)
+                    .replace(config.documentRoot,'')
+                    .replace(/\\/g,'/');
+            }
 
-            // console.log(val, this.env.files._req_.headers.host)
+            // console.log(val, this.env.filename,this.env.files._config_)
             return new(tree.URL)(val, this.rootpath);
         }
     };
