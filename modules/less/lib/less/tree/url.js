@@ -49,11 +49,10 @@
             }else{
                 host = config.debug ? 'http://' + config.req.headers.host : 
                     (typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost);
-
-                val.value = host + absolute(this.env.filename, val.value).replace(config.documentRoot, '').replace(/\\/g,'/');
+                var url = absolute(this.env.filename, val.value).replace(config.documentRoot, '').replace(/\\/g,'/');
+                val.value = url.charAt(0) === '/' ? host + url : host + '/' + url;
             }
             
-
             return new(tree.URL)(val, this.rootpath);
         }
     };
