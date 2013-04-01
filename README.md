@@ -40,7 +40,6 @@
  4. 使用 **合并后的整体静态文件** 的内容md5 hash作为控制缓存的版本号。
  5. 如果合并路径中仅有单个文件，则可使用该文件自身md5 hash做版本号。
  6. 这种方法对不变的资源缓存利用率能大幅提升，不至于因为单个文件改变就使所有资源缓存失效。
-
  
 #辅助开发服务器（用于开发测试，联调）
 1. cd 目标目录, 如`cd /data/ria/` 该目标目录`/data/ria/`即设置服务器为 **documentRoot** . 默认端口为 **8888**.
@@ -55,3 +54,4 @@
 1. 渲染widget和pagelet时，会在模板文件父目录下查找_test/_layout.html，如果存在该模板，就使用它作为wiget的父模板。
 2. 模板文件父目录下 _test/下所有.json文件会自动显示在模板数据select中，供切换以测试不同数据渲染效果。
 3. 模板文件父目录下 _test/下与模板文件同名的.json文件为默认渲染模板所使用的数据文件。
+4. .json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如 `"attachments" : require("widget/reviews/attachments/_test/main.json").attachments`
