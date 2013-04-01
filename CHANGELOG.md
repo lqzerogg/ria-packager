@@ -1,3 +1,7 @@
+v1.9.8
+==================
+1.json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如`"attachments" : require("widget/reviews/attachments/_test/main.json").attachments`
+
 v1.9.5
 ==================
 1. can use relative background-img
