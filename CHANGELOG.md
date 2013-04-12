@@ -1,3 +1,11 @@
+v2.0.0
+==================
+1. url请求参数有?dev=true 时递归获取mustache子模板原始内容.并且在widget和pagelet模块上下附加头尾，引入静态资源
+
+v1.9.9
+==================
+1. url请求参数有?raw=true 时递归获取mustache子模板原始内容.如 http://127.0.0.1:8888/lightsource/widget/reviews/helpful_item/main.html?raw=true 
+
 v1.9.8
 ==================
 1.json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如`"attachments" : require("widget/reviews/attachments/_test/main.json").attachments`
