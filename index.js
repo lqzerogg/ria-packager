@@ -41,40 +41,7 @@ function release(conf){
     }
     to = path.join(path.resolve(to), path.sep);
 
-    if(conf['-noReadline']){
-        publish(conf,from,to);
-    }else{
-        var rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        rl.question("please input the CDN host:\n \
-            1 http://testrelease.lightinthbox.com\n \
-            2 https://lightinthbox.com\n \
-            3 http://(cloud~cloud8).lbox.me\n \
-            or input custom CDN host:...\n\n", function(answer) {
-            switch(answer.trim()) {
-                case '1':
-                    conf.cdnHost = 'http://testrelease.lightinthbox.com';
-                    break;
-                case '2':
-                    conf.cdnHost = 'https://lightinthbox.com';
-                    break;
-                case '3':
-                    break;
-                default:
-                    conf.cdnHost = answer.trim();
-                    if(!conf.cdnHost){
-                        conf.cdnHost = 'RELATIVE';//relative background-img
-                    }
-                    break;
-            }
-            
-            publish(conf,from,to);
-
-            rl.close();
-        });
-    }
+    publish(conf,from,to);
 }
 function publish(conf,from,to) {
     console.time('Package-Time');
@@ -135,5 +102,5 @@ function publish(conf,from,to) {
 module.exports = release;
 if(conf.node === __filename){
 	release(conf);
-    // process.exit(0);
+    process.exit(0);
 }

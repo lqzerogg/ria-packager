@@ -12,15 +12,6 @@
         return path.relative(rootPath,path.resolve(imported,'..',imgPath)).replace(/\\/g,'/').replace('../','');
     }
 
-    /**
-     * 计算图片绝对路径
-     * @param{String}imported: @import引用的css路径
-     * @param{String}imgPath: @import引用的css文件中原始图片路径
-     * */
-    function absolute(imported,imgPath){
-        return path.resolve(path.dirname(imported),imgPath);
-    }
-
     tree.URL = function (val, rootpath, env) {
         this.value = val;
         this.rootpath = rootpath;
@@ -44,15 +35,7 @@
             }
             
             var config = this.env.files._config_, host;
-            if(config.relative){
-                val.value = relative(config['_root_less_'], this.env.filename, val.value);
-            }else{
-                host = config.debug ? 'http://' + config.req.headers.host : 
-                    (typeof config.cdnHost === 'function' ? config.cdnHost.call() : config.cdnHost);
-                var url = absolute(this.env.filename, val.value).replace(config.documentRoot, '').replace(/\\/g,'/');
-                val.value = url.charAt(0) === '/' ? host + url : host + '/' + url;
-            }
-            
+            val.value = relative(config['_root_less_'], this.env.filename, val.value);
             return new(tree.URL)(val, this.rootpath);
         }
     };
