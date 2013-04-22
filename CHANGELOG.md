@@ -1,3 +1,7 @@
+v2.0.4
+==================
+1. merge global_config  .json  to data
+
 v2.0.3
 ==================
 1. less中背景图片自动加md5版本号
