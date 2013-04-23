@@ -1,3 +1,7 @@
+v2.0.5
+==================
+1. add tools/compressImg.js to compress *.png
+
 v2.0.4
 ==================
 1. merge global_config  .json  to data
