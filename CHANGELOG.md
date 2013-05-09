@@ -1,3 +1,7 @@
+v2.0.6
+==================
+1. add <meta http-equiv="X-UA-Compatible" content="IE=edge" /> to fix IE9's bug.
+
 v2.0.5
 ==================
 1. add tools/compressImg.js to compress *.png
