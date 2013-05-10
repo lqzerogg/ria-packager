@@ -55,3 +55,11 @@
 2. 模板文件父目录下 _test/下所有.json文件会自动显示在模板数据select中，供切换以测试不同数据渲染效果。
 3. 模板文件父目录下 _test/下与模板文件同名的.json文件为默认渲染模板所使用的数据文件。
 4. .json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如 `"attachments" : require("widget/reviews/attachments/_test/main.json").attachments`
+
+##模块化联调接口说明
+php开发人员可以远程加载前端开发机上的mustache模板，url中附加 raw=true 参数时只显示原始内容。例如：
+http://fe.tbox.me:8888/lightsource/pagelet/most_helpful_reviews/main.html?raw=true
+*.html 请求中可以附加以下几种特殊参数：
+ 1. raw=true 递归加载显示mustache原始内容
+ 2. dev=true 只显示当前widget原始内容（无子模板的递归加载），同时会加上必要的头和尾，用以引入该模块需要的js和css。
+ 3. iframe=true   前端团队写模块文档时可能要使用iframe引入test case页面，为了避免iframe显示底部的切换语言，皮肤，数据这个区块，可以在url中附加参数 iframe=true
