@@ -1,3 +1,7 @@
+v2.0.7
+==================
+1. fix bug in @import,eg: @import url("http://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+
 v2.0.6
 ==================
 1. add <meta http-equiv="X-UA-Compatible" content="IE=edge" /> to fix IE9's bug.
