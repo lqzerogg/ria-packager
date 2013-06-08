@@ -13,8 +13,9 @@ if(process.argv.length === 2){
     console.error('#stop     server#: ria-packager -stop');
     process.exit(1);
 }
-
-var pid = path.join(os.tmpDir(), '.node_pid');
+//modify by huajian --根据端口启动多个不同的服务而不会互相干扰
+var port = parseInt('port', 10) || 8888;
+var pid = path.join(os.tmpDir(), port + '.node_pid');
 
 if(conf['-start'] || conf['-restart']){
     kill();
