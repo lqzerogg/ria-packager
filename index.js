@@ -67,7 +67,7 @@ function publish(conf,from,to) {
 
     //2. 复制非js,css,less文件(swf,图片等静态资源,同时计算其md5)
     otherFiles.forEach(function(source) {
-        cpf(source, source.replace(from, to), to);
+        cpf(source, source.replace(from, to));
     });
 
     //3.压缩,合并css
@@ -84,7 +84,7 @@ function publish(conf,from,to) {
 
     //7 copy .html file,and replace the md5 version num.
     htmlList.forEach(function(source) {
-        cpf(source, source.replace(from, to), to);
+        cpf(source, source.replace(from, to), from);
     });
 
     console.log('######## Package SUCCESS! ###########');
