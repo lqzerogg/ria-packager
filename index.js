@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var readline = require('readline');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
