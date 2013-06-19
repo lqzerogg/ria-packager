@@ -7,8 +7,8 @@ var mkdirp = require('mkdirp');
 var log = require('./lib/tools/log');
 var walk = require('./lib/tools/dirWalker');
 
-var pkgJs = require('./lib/js/PKG/pkgJs');
-var pkgCss = require('./lib/css/PKG/pkgCss');
+var pkgJs = require('./lib/js/combineAll');
+var pkgCss = require('./lib/css/combineAll');
 var pkgLess = require('./lib/less/combineAll');
 
 var cpf = require('./lib/tools/cpFile');

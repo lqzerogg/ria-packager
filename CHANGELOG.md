@@ -1,3 +1,10 @@
+v2.0.8
+==================
+1. 打包时不处理widget和pagelet这2个目录
+2. 简化js和css批处理逻辑
+3. add debugWindow to edit json data.
+4. 把page目录下的mustache模板引用的子模板合并到page mustache .html
+
 v2.0.7
 ==================
 1. fix bug in @import,eg: @import url("http://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
