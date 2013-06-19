@@ -1,3 +1,7 @@
+v2.0.9
+==================
+1. fix bug when process .css
+
 v2.0.8
 ==================
 1. 打包时不处理widget和pagelet这2个目录
