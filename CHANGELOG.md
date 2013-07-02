@@ -1,3 +1,9 @@
+v2.1.2
+==================
+1. default will rewrite static file name(.js, .css, img. but does't rewrite .html file name)
+2. you can pass `-noRewriteFileName` option to avoid rewrite file name.
+3. img name in .less will also be rewrited(if no `-noRewriteFileName` option).
+
 v2.0.9
 ==================
 1. fix bug when process .css

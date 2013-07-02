@@ -17,7 +17,10 @@ var conf = require("argsparser").parse();
 
 function release(conf){
     function showUsage() {
-        console.error('Usage: node index.js -from fromDir -to toDir [-root srcRoot] [-verbose or -v]');
+        //default will rewrite static file(.js, .css, img)'s name 
+        //but does't rewrite .html file name.
+        console.error('Usage: node index.js -from fromDir -to toDir  [-verbose or -v] ' + 
+                      ' [-noRewriteFileName]');
         process.exit(1);
     }
 
@@ -66,11 +69,11 @@ function publish(conf,from,to) {
 
     //2. 复制非js,css,less文件(swf,图片等静态资源,同时计算其md5)
     otherFiles.forEach(function(source) {
-        cpf(source, source.replace(from, to));
+        cpf(source, source.replace(from, to), from, conf);
     });
 
     //3.压缩,合并css
-    pkgCss(from, to, cssList);
+    pkgCss(from, to, cssList,conf);
 
     //4. 压缩,合并js
     pkgJs(from, to, jsList, conf);

@@ -44,11 +44,16 @@
                 val.value = rootpath + val.value;
             }
             
-            var config = this.env.files._config_, host;
+            var config = this.env.files._config_;
             var img = absolute(this.env.filename, val.value).replace(/\\/g,'/');
             val.value = relative(config['_root_less_'], this.env.filename, val.value);
             if(md5Mapping[img]){
-                val.value = val.value + '?v=' + md5Mapping[img];
+                if(config.noRewriteFileName){
+                    val.value = val.value + '?v=' + md5Mapping[img];
+                }else{
+                    var ext = path.extname(val.value);
+                    val.value = val.value.replace(ext, '_' + md5Mapping[img] + ext);
+                }
             }
             
             return new(tree.URL)(val, this.rootpath);
