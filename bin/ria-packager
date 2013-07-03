@@ -8,7 +8,7 @@ var conf = require("argsparser").parse();
 var spawn = require('child_process').spawn;
 
 if(process.argv.length === 2){
-    console.error('#package project#: ria-packager -from fromDir -to toDir [-verbose or -v]');
+    console.error('#package project#: ria-packager -from fromDir -to toDir [-verbose or -v] [-noRewriteFileName]');
     console.error('#start    server#: ria-packager -start  -port 80');
     console.error('#stop     server#: ria-packager -stop');
     process.exit(1);
