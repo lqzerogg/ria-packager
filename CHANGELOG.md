@@ -1,6 +1,12 @@
+v2.1.4
+==================
+1. js目录下仅保留i18n子目录下js
+2. less目录下仅保留i18n and theme 子目录下js
+
 v2.1.3
 ==================
-1. fix img encode bug('utf-8' to 'binary')
+1. fix bug when encode img
+
 
 v2.1.2
 ==================
