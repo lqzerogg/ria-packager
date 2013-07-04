@@ -1,3 +1,7 @@
+v2.1.3
+==================
+1. fix img encode bug('utf-8' to 'binary')
+
 v2.1.2
 ==================
 1. default will rewrite static file name(.js, .css, img. but does't rewrite .html file name)
