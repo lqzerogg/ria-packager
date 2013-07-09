@@ -1,3 +1,8 @@
+v2.1.5
+==================
+1. shwo file size before and after compressing .png 
+2. windows下打包时,生成md5_mapping.json时文件路径统一使用`/` 
+
 v2.1.4
 ==================
 1. js目录下仅保留i18n子目录下js
