@@ -1,3 +1,8 @@
+v2.1.6
+==================
+1.针对lightsource完成文档自动生成模块
+2.debug页面增加文档生成入口
+
 v2.1.5
 ==================
 1. shwo file size before and after compressing .png 
