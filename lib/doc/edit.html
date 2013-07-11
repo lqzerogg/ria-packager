@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{type}} edit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <style>
+    	{{{includecss}}}
+    </style>
+    <script>
+    	{{{includejs}}}
+    </script>
+  </head>
+ <body>
+ 	<div class="container">
+ 		<h1>{{widget}}</h1>
+		<fieldset>
+			<form class="form-horizontal info">
+				<div class="control-group" style="display:none;">
+					<label class="control-label" for="widget">{{type}} name</label>
+					<div class="controls">
+						<input type="text" id="widget" name="widget" readOnly value="{{widget}}">
+					</div>
+				</div>
+				<div class="control-group" style="display:none;">
+					<label class="control-label" for="path">{{type}} path</label>
+					<div class="controls">
+						<input type="text" id="path" name="path" placeholder="widget path" value="{{path}}" readOnly/>
+					</div>
+				</div>
+				<legend>{{type}} 描述</legend>
+				<div class="control-group">
+					<label class="control-label" for="wDescription">{{type}} 描述</label>
+					<div class="controls">
+						<input type="text" id="wDescription" name="wDescription" placeholder="{{type}} 描述" value="{{wDescription}}" data-must="true">
+					</div>
+				</div>
+			</form>
+			{{#description}}
+			<form class="form-horizontal des">
+				<legend>{{type}}注释信息</legend>
+				<div class="control-group">
+					<label class="control-label" for="list">{{type}}功能列表：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="list" name="list" placeholder="{{type}}功能列表-支持markdown">{{list}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="template">{{type}}使用的html模板：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="template" name="template" placeholder="{{type}}使用的html模板">{{template}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="init">{{type}}初始化事件：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="init" name="init" placeholder="{{type}}初始化事件">{{init}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="time">{{type}}执行时间：</label>
+					<div class="controls">
+						<select id="time" name="time" data-selected="{{time}}">
+						  <option value="0">立即执行</option>
+						  <option value="1">Dom Ready</option>
+						  <option value="2">Onload </option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="event">{{type}}绑定的事件：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="event" name="event" placeholder="{{type}}绑定的事件-支持markdown">{{event}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="intro">{{type}}主要函数及说明：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="intro" name="intro" placeholder="{{type}}主要函数及说明-支持markdown">{{intro}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="data">{{type}}使用的数据接口：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="data" name="data" placeholder="{{type}}使用的数据接口-支持markdown">{{data}}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="notice">{{type}}使用注意事项：</label>
+					<div class="controls">
+						<textarea class="markdown"  rows="5" id="notice" name="notice" placeholder="{{type}}注意事项（代码或者功能）-支持markdown">{{notice}}</textarea>
+					</div>
+				</div>
+			</form>
+			{{/description}}
+<!-- 			<form class="form-horizontal" data-type="require_html">
+				<legend>Imoport Html File</legend>
+				{{#require_html}}
+				<div class="control-group" {{display}}>
+					<label class="control-label" for="description">{{url}}</label>
+					<div class="controls">
+						<input type="hidden" name="key" value="{{url}}"/>
+						<input type="text" name="value" placeholder="{{url}}" value="{{description}}"/>
+					</div>
+				</div>
+				{{/require_html}}
+			</form>
+			<form class="form-horizontal" data-type="require_css">
+				<legend>Imoport CSS File</legend>
+				{{#require_css}}
+				<div class="control-group" {{display}}>
+					<label class="control-label" for="description">{{url}}</label>
+					<div class="controls">
+						<input type="hidden" name="key" value="{{url}}"/>
+						<input type="text" name="value" placeholder="{{url}}" value="{{description}}"/>
+					</div>
+				</div>
+				{{/require_css}}
+			</form>
+			<form class="form-horizontal" data-type="require_js">
+				<legend>Imoport Js File</legend>
+				{{#require_js}}
+				<div class="control-group" {{display}}>
+					<label class="control-label" for="description">{{url}}</label>
+					<div class="controls">
+						<input type="hidden" name="key" value="{{url}}"/>
+						<input type="text" name="value" placeholder="{{url}}" value="{{description}}"/>
+					</div>
+				</div>
+				{{/require_js}}
+			</form> -->
+		</fieldset>
+		{{#testcase}}
+		<form class="form-horizontal testcase">
+			<legend>Test Case</legend>
+			<!-- <label class="control-label" for="theme">theme</label>
+			<select multiple="multiple" name="theme" id="theme">
+			{{#theme}}
+				<option value="{{key}}" {{selected}}>{{value}}</option>
+			{{/theme}}
+			</select> -->
+			<!-- <label class="control-label" for="i18n">i18n</label>
+			<select multiple="multiple" name="i18n" id="i18n">
+				{{#i18n}}
+				<option value="{{key}}" {{selected}}>{{value}}</option>
+				{{/i18n}}
+			</select> -->
+			<div class="control-group">
+				<label class="control-label" for="theme">theme:</label>
+				<div class="controls">
+					<label class="checkbox inline">
+						<input type="checkbox" name="theme" value="/lightsource/less/theme/default.css"   readOnly checked>default
+					</label>
+					{{#theme}}
+					<label class="checkbox inline">
+						<input type="checkbox" name="theme" value="{{key}}">{{value}}
+					</label>
+					{{/theme}}
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="i18n">i18n:</label>
+				<div class="controls">
+					<label class="checkbox inline">
+						<input type="checkbox" name="i18n" value="0" readOnly checked>default
+					</label>
+					{{#i18n}}
+					<label class="checkbox inline">
+						<input type="checkbox" name="i18n" value="{{key}}" {{selected}}> {{value}}
+					</label>
+					{{/i18n}}
+				</div>
+			</div>
+		</form>
+		{{/testcase}}
+		<button type="button" class="btn" id="save">save</button>
+		<br/><br/><br/><br/><br/>
+	</div>
+
+	<script>
+		function checkForm(){
+			var allMust = $('[data-must="true"]');
+			for(var i = 0; i < allMust.length; i++){
+				if($.trim(allMust.eq(i).val()) == ''){
+					allMust[i].focus();
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function mySerialize(arr) {
+			var newObj = {};
+			for(var i = 0; i < arr.length; i++){
+				if(typeof newObj[arr[i].name] !== 'undefined'){
+					if(typeof newObj[arr[i].name] === 'string'){
+						newObj[arr[i].name] = [newObj[arr[i].name]];	
+					}
+					newObj[arr[i].name].push(arr[i].value);
+				}else{
+					newObj[arr[i].name] = arr[i].value;
+				}
+			}
+			return newObj;
+		}
+		$('#save').click(function(){
+			if(!checkForm()){
+				return;
+			}
+			var data = {};
+			data = mySerialize($('form.info').serializeArray());
+			data.description = mySerialize($('form.des').serializeArray());
+			// $('form.form-horizontal').each(function(i){
+			// 	var key = $(this).data('type');
+			// 	if(key){
+			// 		data[key] = [];
+			// 		$(this).find('div.control-group').each(function(){
+			// 			data[key].push({
+			// 				'key' : $(this).find('input[name="key"]').val(),
+			// 				'value' : $(this).find('input[name="value"]').val()
+			// 			});
+			// 		})
+			// 	}else{
+				
+			// 	}
+			// })
+			
+
+			data.testcase = mySerialize($('form.testcase').serializeArray());
+			$.post("/doc/saveDoc.ajax",{
+	            'url' : window.location.pathname,
+	            'data' : data
+	            },function(json){
+	        		if(json && json.code =='exsis'){
+	        			alert(json.error);
+	        		}else{
+	        			alert('edit success!')
+	        			var urlArr = window.location.pathname.split('/');
+	        			urlArr.pop();
+	        			var url = urlArr.join('/');
+	        			window.location.href = url + '/';
+	        		}
+	            }
+	        );
+		});
+
+		$('legend').click(function(){
+			$(this).nextAll('div').slideToggle('fast');
+		});
+		(function(){
+			$('select').each(function(i){
+				if($(this).data('selected')){
+					$(this).val($(this).data('selected'));
+				}
+			});
+		})();
+		
+	</script>
+ </body>
+ </html>
