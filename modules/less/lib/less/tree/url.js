@@ -45,7 +45,7 @@
             }
             
             var config = this.env.files._config_;
-            var img = absolute(this.env.filename, val.value).replace(/\\/g,'/');
+            var img = absolute(this.env.filename, val.value);
             val.value = relative(config['_root_less_'], this.env.filename, val.value);
             if(md5Mapping[img]){
                 if(config.noRewriteFileName){
