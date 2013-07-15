@@ -1,3 +1,6 @@
+v2.1.8
+==================
+1. rm log when processing .less
 v2.1.7
 ==================
 1.fix windows user打包时图片md5路径bug
