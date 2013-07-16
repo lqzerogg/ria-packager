@@ -1,3 +1,10 @@
+v2.1.8
+==================
+1. rm log when processing .less
+v2.1.7
+==================
+1.fix windows user打包时图片md5路径bug
+
 v2.1.6
 ==================
 1.针对lightsource完成文档自动生成模块
