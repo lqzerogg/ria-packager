@@ -1,3 +1,7 @@
+v2.1.9
+==================
+1.debug ie6,7,8 bug fixed;
+2.doc main not exists bug fixed;
 v2.1.8
 ==================
 1. rm log when processing .less
