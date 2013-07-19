@@ -1,3 +1,7 @@
+v2.2.0
+==================
+1. fix bug when 递归获取mustache子模板原始内容(a RegExp bug)
+
 v2.1.9
 ==================
 1.debug ie6,7,8 bug fixed;
