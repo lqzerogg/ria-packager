@@ -1,8 +1,9 @@
 #前端打包系统:批量压缩,合并 .js, .css, .less文件，自动转换css和less中图片地址相对路径。#
- 1. 合并`require('a/b/c.js');`
- 2. 合并`@import url("a/b/c.css");` 重新计算背景图片相对地址. 剔除重复@import (目前策略是保留第一个css；以前是保留最后一个)
- 3. 计算文件md5值，用于缓存版本号。
-    1. 替换背景图片地址 `background-image: url(../../img/sprite-new.png?v=md5-hash);`
+ 1. 合并js文件：`require('a/b/c.js');`
+ 2. 合并css文件：`@import url("a/b/c.css");` 重新计算背景图片相对地址. 剔除重复@import (目前策略是保留第一个css；以前是保留最后一个)
+ 3. 合并less文件：`@import-once "../../../less/base/zindex.less";` 
+ 4. 计算文件md5值，用于缓存版本号。
+    1. 替换背景图片地址 `background-image: url(../../img/sprite_md5hash.png);` 这种方式有利于增量发布及A/B test。
     2. 生成js，css 文件内容md5映射(`md5_mapping.json`)，可用于更新或者回滚版本号。
 
 #通过npm安装:
@@ -22,24 +23,7 @@
 
 #在线打包部署（方便不习惯命令行的用户，目前只支持linux系统）
  1. 访问 `工程名称/deploy` 路径，如`mobile/deploy` 可在线打包mobile工程为`mobile.zip`可供下载
- 
-#前端资源独立发布上线(url根目录可变)#
- 1. 使用 **resource_xyz** 形式发布，如 **mobile** 工程打包会会变成 **mobile_90278** ,其中90278是mobile工程svn主干最新版本号。
- 2. page页面使用`<link href="{{{cdn}}}/{{{resource}}}/??{{{main_css}}},{{{skin_css}}},{{{i18n_css}}}"/>`引用css。
- 3. page页面使用`<script type="text/javascript" src="{{{cdn}}}/{{{resource}}}/??{{{i18n_js}}},{{{main_js}}}"></script>`引用js。
- 4. {{{cdn}}},{{{skin_css}}},{{{i18n_css}}},{{{i18n_js}}}由模板数据决定.
- 5. {{{resource}}}在开发期会被替换成当前工程名称，如mobile。发布时，打包系统会自根据最新svn版本号，来替换{{{resource}}}为对应的 **resource_xyz** ，如 **mobile_90278** 。
- 6. 开发环境及打包系统会自动替换 {{{main_css}}}和{{{main_js}}}为模板对应的主css和js。
 
-#前端资源独立发布上线(url根目录不变)#
- 1. 如cdn支持固定资源目录，则打包时可以使用md5 hash为单个资源版本号，
- 如`{{{cdn}}}/{{{resource}}}/??i18n/js/en.js,page/a/b.js?v=635116ee02ab32fd`，
- 其中resource是固定工程目录，如 **/ria/mobile** 
- 2. 注意： [nginx-http-concat](https://github.com/taobao/nginx-http-concat) 中 If a third ? is present it's treated as version string. 
- 3. 注意： **CDNs use pull-based caching, not push-based replication**
- 4. 使用 **合并后的整体静态文件** 的内容md5 hash作为控制缓存的版本号。
- 5. 如果合并路径中仅有单个文件，则可使用该文件自身md5 hash做版本号。
- 6. 这种方法对不变的资源缓存利用率能大幅提升，不至于因为单个文件改变就使所有资源缓存失效。
  
 #辅助开发服务器（用于开发测试，联调）
 1. cd 目标目录, 如`cd /data/ria/` 该目标目录`/data/ria/`即设置服务器为 **documentRoot** . 默认端口为 **8888**.
@@ -54,7 +38,7 @@
 1. 渲染widget和pagelet时，会在模板文件父目录下查找_test/_layout.html，如果存在该模板，就使用它作为wiget的父模板。
 2. 模板文件父目录下 _test/下所有.json文件会自动显示在模板数据select中，供切换以测试不同数据渲染效果。
 3. 模板文件父目录下 _test/下与模板文件同名的.json文件为默认渲染模板所使用的数据文件。
-4. .json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如 `"attachments" : require("widget/reviews/attachments/_test/main.json").attachments`
+4. .json文件中可以使用`require('a/b/c.json')`形式嵌套加载子.json文件。如 `"attachments" : require("widget/reviews/attachments/_test/main.json")`
 
 ##模块化联调接口说明
 php开发人员可以远程加载前端开发机上的mustache模板，url中附加 raw=true 参数时只显示原始内容。例如：
