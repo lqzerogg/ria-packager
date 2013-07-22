@@ -1,3 +1,8 @@
+v2.2.1
+==================
+1.decodeURIComponent bug fixed;
+2.iframe bug fixed;
+
 v2.2.0
 ==================
 1. fix bug when 递归获取mustache子模板原始内容(a RegExp bug)
