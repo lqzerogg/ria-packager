@@ -1,10 +1,11 @@
 #前端打包系统:批量压缩,合并 .js, .css, .less文件，自动转换css和less中图片地址相对路径。#
  1. 合并js文件：`require('a/b/c.js');`
  2. 合并css文件：`@import url("a/b/c.css");` 重新计算背景图片相对地址. 剔除重复@import (目前策略是保留第一个css；以前是保留最后一个)
- 3. 合并less文件：`@import-once "../../../less/base/zindex.less";` 
+ 3. 合并less文件：`@import-once "less/base/zindex.less";` 
  4. 计算文件md5值，用于缓存版本号。
     1. 替换背景图片地址 `background-image: url(../../img/sprite_md5hash.png);` 这种方式有利于增量发布及A/B test。
     2. 生成js，css 文件内容md5映射(`md5_mapping.json`)，可用于更新或者回滚版本号。
+ 5. 注意： require .js（及.json）是从工程根目录开始计算路径; import .css及.less时按照文件相对路径计算。css和less中图片的引用也使用相对路径来计算。
 
 #通过npm安装:
  1.  安装老的稳定版，用于支持mobile等老模块化工程:  `npm install ria-packager@1.5.0` 
