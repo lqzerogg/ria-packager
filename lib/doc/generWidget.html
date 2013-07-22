@@ -203,7 +203,7 @@
 	        			alert('create success')
 	        			var urlArr = window.location.pathname.split('/');
 	        			urlArr.pop();
-	        			urlArr.push(type);
+	        			urlArr.push('{{type}}');
 	        			if(data.dir !=''){
 	        				urlArr.push(data.dir);
 	        			}
