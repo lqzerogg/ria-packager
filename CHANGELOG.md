@@ -1,3 +1,8 @@
+v2.2.2
+==================
+1.less onchange bug fixed;
+2.doc bug fixed;
+
 v2.2.1
 ==================
 1.decodeURIComponent bug fixed;
